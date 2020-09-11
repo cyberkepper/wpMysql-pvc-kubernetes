@@ -32,6 +32,7 @@ metadata:
   labels:
     app: wordpress
 spec:
+  replicas: 4
   selector:
     matchLabels:
       app: wordpress
@@ -45,16 +46,17 @@ spec:
         tier: frontend
     spec:
       containers:
-      - image: wordpress:4.8-apache
+      - image: wordpress:5.5.1-apache
         name: wordpress
         env:
         - name: WORDPRESS_DB_HOST
           value: wordpress-mysql
         - name: WORDPRESS_DB_PASSWORD
+          #value: eighooToh3ohgh9woh6Ohlee
           valueFrom:
             secretKeyRef:
               name: mysql-pass
-              key: password
+              key: MYSQL_ROOT_PASSWORD
         ports:
         - containerPort: 80
           name: wordpress
