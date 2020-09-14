@@ -31,8 +31,7 @@ metadata:
   name: wordpress
   labels:
     app: wordpress
-spec:
-  replicas: 4
+spec:      
   selector:
     matchLabels:
       app: wordpress
